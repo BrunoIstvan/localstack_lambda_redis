@@ -1,0 +1,38 @@
+version: '3'
+
+#networks:
+#  my_network:
+#    driver: bridge
+
+services:
+
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4574:4574"
+      - "8055:8080"
+    environment:
+      - SERVICES=lambda
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - LAMBDA_EXECUTOR=docker-reuse
+      - LAMBDA_REMOTE_DOCKER=true
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - /tmp/localstack:/tmp/localstack
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    network_mode: bridge
+#    networks:
+#      - my_network
+
+  my_redis_service:
+    image: redis:alpine
+#    command: redis-server
+#    --requirepass Redis2019!
+#    restart: always
+#    expose:
+#      - '6379'
+    ports:
+      - '6379:6379'
+    network_mode: bridge
+#      - my_network
