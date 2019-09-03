@@ -12,8 +12,8 @@ Em outra janela, executar o seguinte comando para preparar os serviços em cada 
 sh run.sh
 ```
 
-Após a finalização, basta invocar a função lambda. Para isso, exe
+Após a finalização, basta invocar a função lambda. Para isso, executar o comando:
 
 ```bash
-aws --endpoint-url=http://localhost:4574 lambda invoke --function-name lambda-demo out --log-type Tailcutar o comando:
+aws --endpoint-url=http://localhost:4574 lambda invoke --function-name lambda-demo out --log-type Tail
 ```
